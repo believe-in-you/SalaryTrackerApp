@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "443096135043",
+    "project_id": "salarytracker-dbb1b",
+    "storage_bucket": "salarytracker-dbb1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443096135043:android:9add46d03a0cc93abe32b6",
+        "android_client_info": {
+          "package_name": "com.example.myapplication.salarytracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443096135043-3rml1lnhlfdl9lhjt0mi6iabjb0p24m6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRfQECy9_rAxH2h8lgBd6VAFBsAEQsUSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443096135043-3rml1lnhlfdl9lhjt0mi6iabjb0p24m6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

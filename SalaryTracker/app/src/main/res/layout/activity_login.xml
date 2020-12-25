@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginSignup.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "@string/login_head"
+        android:textSize="30sp"
+        android:layout_marginVertical="20dp"
+        android:gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:textSize="15sp"
+        android:hint="@string/login_username_hint" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:hint="@string/login_password_hint"
+        android:inputType="textPassword"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:text="@string/login_button"
+        android:textColor="#000000"
+        android:layout_marginVertical="20dp"
+        android:textSize="20sp"
+        android:paddingHorizontal="40dp"
+        app:backgroundTint="#FFFFFF"
+        android:onClick="onClickLogin"/>
+
+    <TextView
+        android:id="@+id/login_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_signup"
+        android:gravity="center"
+        android:onClick="onClickSignup"/>
+
+</LinearLayout>

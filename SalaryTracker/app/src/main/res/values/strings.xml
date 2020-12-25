@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SalaryTracker</string>
+
+    <string name="login_head">Login Page</string>
+    <string name="login_username_hint">Enter Admin Username</string>
+    <string name="login_password_hint">Enter Password</string>
+    <string name="login_button">LOGIN</string>
+    <string name="login_signup">Don\&apos; t have an ID? Signup from here</string>
+
+    <string name="signup_head">SignUp Page</string>
+    <string name="signup_name_hint">Enter Name</string>
+    <string name="signup_username_hint">Enter Username</string>
+    <string name="signup_password_hint">Enter Password</string>
+    <string name="signup_confirm_password_hint">Confirm Password</string>
+    <string name="signup_phoneno_hint">Enter Phone No.</string>
+    <string name="signup_button">SignUp</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+</resources>

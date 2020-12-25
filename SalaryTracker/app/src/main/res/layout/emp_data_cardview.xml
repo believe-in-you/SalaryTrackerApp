@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/emp_data_cardview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginHorizontal="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background"
+        android:id="@+id/emp_cardview_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/emp_cardview_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aman Pratap Singh"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/black_ops_one"
+            android:textSize="15sp"
+            android:paddingTop="7dp"/>
+
+        <TextView
+            android:id="@+id/emp_cardview_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:fontFamily="@font/black_ops_one"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:text="Senior Developer"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/emp_cardview_basesalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:fontFamily="@font/black_ops_one"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:text= "Rs 160000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/emp_cardview_leave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Leaves this month: 3"
+            android:fontFamily="@font/black_ops_one"
+            android:textColor="#FFFFFF"
+            android:layout_marginHorizontal="5dp"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="7dp"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
