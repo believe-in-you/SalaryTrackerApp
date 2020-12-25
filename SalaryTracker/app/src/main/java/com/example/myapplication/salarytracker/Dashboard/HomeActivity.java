@@ -3,6 +3,7 @@ package com.example.myapplication.salarytracker.Dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.myapplication.salarytracker.LoginSignup.LoginActivity;
 import com.example.myapplication.salarytracker.Payment.DueDatesActivity;
 import com.example.myapplication.salarytracker.SharedPreferences.SessionManager;
 import com.example.myapplication.salarytracker.UserDetails.Admin;
@@ -30,18 +31,10 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         mTextView = findViewById(R.id.admin_details);
         Intent in = getIntent();
         Admin data = in.getParcelableExtra("ADMIN INFO");
-
+        if(data==null) data = LoginActivity.loggedIn;
         if(data!=null) {
             String disp = "Name: " + String.valueOf(data.getName()) + "\nUsername: " + String.valueOf(data.getUsername());
 

@@ -191,14 +191,27 @@
                 android:textSize="20sp" />
         </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/ind_update"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Update" />
+                android:weightSum="1">
+                <Button
+                    android:id="@+id/ind_update"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="Update" />
+
+                <Button
+                    android:id="@+id/ind_payments_history"
+                    android:layout_width="0dp"
+                    android:onClick="onPaymentsHistory"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Payments History" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

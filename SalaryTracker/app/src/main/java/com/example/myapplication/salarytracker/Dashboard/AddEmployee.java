@@ -15,8 +15,10 @@ import com.example.myapplication.salarytracker.R;
 import com.example.myapplication.salarytracker.UserDetails.Employee;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -53,8 +55,8 @@ public class AddEmployee extends AppCompatActivity {
         String edu_qual = mEduQual.getText().toString();
         String base_salary = mBaseSalary.getText().toString();
 
-        if(name.isEmpty() || emailid.isEmpty() || phoneno.isEmpty() ||
-            post.isEmpty() || edu_qual.isEmpty() || base_salary.isEmpty()) {
+        if (name.isEmpty() || emailid.isEmpty() || phoneno.isEmpty() ||
+                post.isEmpty() || edu_qual.isEmpty() || base_salary.isEmpty()) {
 
             // None of positions should be empty...
             Toast.makeText(this, "None of the fields should be left empty", Toast.LENGTH_SHORT).show();
@@ -79,22 +81,23 @@ public class AddEmployee extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful() && !task.getResult().isEmpty()) {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             Toast.makeText(AddEmployee.this, "Employee with this emailID exists, " +
                                     "try with another one, or check for duplicates", Toast.LENGTH_LONG).show();
-                        }
-
-                        else {
+                        } else {
                             // We can add this employee
+
                             db.collection(EMPLOYEE_DATA)
-                                    .add(employee)
-                                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                    .document(emailid)
+                                    .set(employee)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
 
                                         @Override
-                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                        public void onSuccess(Void aVoid) {
                                             Toast.makeText(AddEmployee.this, "Employee Data appended successfully", Toast.LENGTH_SHORT).show();
                                             Intent in = new Intent(AddEmployee.this, EmployeeDataDisplayActivity.class);
                                             startActivity(in);
+                                            finish();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -105,19 +108,12 @@ public class AddEmployee extends AppCompatActivity {
                                             Log.e("REGISTRATION FAILED: ", "TRUE");
                                         }
                                     });
+
+
+
                         }
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddEmployee.this, "Some error occurred, try again...", Toast.LENGTH_SHORT).show();
-
                     }
                 });
-
 
     }
 }

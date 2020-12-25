@@ -11,12 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SalaryTracker">
-        <activity android:name=".Payment.DueDatesActivity"></activity>
-        <activity android:name=".Dashboard.IndividualEmployeeData" />
+        <activity android:name=".Payment.PaymentHistoryActivity"></activity>
+        <activity android:name=".Payment.DueDatesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Dashboard.HomeActivity" />
+        </activity>
+        <activity android:name=".Dashboard.IndividualEmployeeData">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Dashboard.EmployeeDataDisplayActivity" />
+        </activity>
         <activity android:name=".Dashboard.AddEmployee" />
         <activity
             android:name=".Dashboard.EmployeeDataDisplayActivity"
-            android:theme="@style/Theme.SalaryTracker.NoActionBar" />
+            android:theme="@style/Theme.SalaryTracker.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Dashboard.HomeActivity" />
+        </activity>
         <activity
             android:name=".Dashboard.HomeActivity"
             android:label="@string/title_activity_home"

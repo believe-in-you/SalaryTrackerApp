@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginUsername, loginPassword;
     private Button loginButton;
     private TextView loginSignup;
+    public static Admin loggedIn;
 
     private FirebaseFirestore db;
 
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         if(loggedInUser != null) {
             Intent in = new Intent(this, HomeActivity.class);
             in.putExtra("ADMIN INFO", loggedInUser);
-
+            loggedIn = loggedInUser;
             startActivity(in);
         }
     }

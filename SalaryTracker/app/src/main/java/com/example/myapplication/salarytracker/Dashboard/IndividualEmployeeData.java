@@ -12,8 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.salarytracker.Payment.PaymentHistoryActivity;
 import com.example.myapplication.salarytracker.R;
 import com.example.myapplication.salarytracker.UserDetails.Employee;
+import com.example.myapplication.salarytracker.UserDetails.History;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,6 +32,7 @@ public class    IndividualEmployeeData extends AppCompatActivity {
     private TextView name, emailid, edu_qual;
     private Button update;
     private FirebaseFirestore db;
+    private Employee emp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class    IndividualEmployeeData extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         Intent in = getIntent();
-        Employee emp = in.getParcelableExtra("Current Employee");
+        emp = in.getParcelableExtra("Current Employee");
 
 
         name.setText(emp.getName());
@@ -131,4 +134,16 @@ public class    IndividualEmployeeData extends AppCompatActivity {
         });
 
     }
+
+    public void onPaymentsHistory(View view) {
+        Intent in = new Intent(this, PaymentHistoryActivity.class);
+        in.putExtra("emailid", emailid.getText().toString());
+        in.putExtra("name", name.getText().toString());
+        in.putExtra("base_salary", base_salary.getText().toString());
+
+        startActivity(in);
+
+
+    }
+
 }

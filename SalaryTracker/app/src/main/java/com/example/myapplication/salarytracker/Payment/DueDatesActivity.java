@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -58,8 +59,8 @@ public class DueDatesActivity extends AppCompatActivity {
 
                                         @Override
                                         public int compare(Employee o1, Employee o2) {
-                                            if(o1.getDue_month() > o2.getDue_month() && o1.getDue_year() <= o2.getDue_month()) return 1;
-                                            else if(o1.getDue_month() < o2.getDue_month() && o1.getDue_year() <= o2.getDue_month()) return 1;
+                                            if(o1.getDue_year() != o2.getDue_year()) return o1.getDue_year()-o2.getDue_year();
+                                            else if(o1.getDue_month() != o2.getDue_month()) return o1.getDue_month()-o2.getDue_month();
 
                                             return o1.getName().compareTo(o2.getName());
                                         }

@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.salarytracker.Payment.DueDatesActivity;
 import com.example.myapplication.salarytracker.R;
 import com.example.myapplication.salarytracker.UserDetails.Employee;
+import com.example.myapplication.salarytracker.UserDetails.History;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.myapplication.salarytracker.Dashboard.AddEmployee.EMPLOYEE_DATA;
+import static com.example.myapplication.salarytracker.Payment.PaymentHistoryActivity.HISTORY;
 import static java.util.Map.entry;
 
 public class DueDatesAdapter extends RecyclerView.Adapter<DueDatesAdapter.DueDatesViewHolder>{
@@ -123,35 +126,62 @@ public class DueDatesAdapter extends RecyclerView.Adapter<DueDatesAdapter.DueDat
                         newCal.set(next_due_year, next_due_month, 1);
                         int next_due_date = newCal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
+                        // For storing payment history
+                        final History history = new History(curr_emp.getName(),
+                                String.valueOf(due_date),
+                                String.valueOf(due_month),
+                                String.valueOf(due_year),
+                                String.valueOf(curr_emp.getNum_leaves()),
+                                String.valueOf(amnt_to_pay));
+                        Log.e("Number leaves BF" + curr_emp.getName(), curr_emp.getNum_leaves());
+
                         final Employee modified_emp = curr_emp;
                         modified_emp.setDue_date(next_due_date);     // Setting the new due date for payment
                         modified_emp.setDue_month(next_due_month);
                         modified_emp.setDue_year(next_due_year);
                         modified_emp.setNum_leaves("0");             // New number of leaves for this month = 0
 
+                        /**
+                         * Inserting the current data to history of that employee, and modifying the data
+                         */
+
+                        Log.e("Number leaves AF" + curr_emp.getName(), curr_emp.getNum_leaves());
+
+                        String id = curr_emp.getEmailid();
+
                         db.collection(EMPLOYEE_DATA)
-                                .whereEqualTo("emailid", curr_emp.getEmailid())
-                                .get()
-                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                    @Override
-                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                        String id = queryDocumentSnapshots.getDocuments().get(0).getId();
-                                        DocumentReference ob = db.collection(EMPLOYEE_DATA).document(id);
-
-                                        ob.set(modified_emp);
-                                        holder.pending_tag.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(context, "Updated!!", Toast.LENGTH_LONG).show();
-                                        // Refreshing the Screen to reflect the changes
-                                        Intent in = new Intent(context, DueDatesActivity.class);
-                                        context.startActivity(in);
-
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
+                                .document(id)
+                                .collection(HISTORY)
+                                .add(history)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
 
                                     @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(context, "Cannot update data now, try later...", Toast.LENGTH_SHORT).show();
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        db.collection(EMPLOYEE_DATA)
+                                                .whereEqualTo("emailid", curr_emp.getEmailid())
+                                                .get()
+                                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                        String id = queryDocumentSnapshots.getDocuments().get(0).getId();
+                                                        DocumentReference ob = db.collection(EMPLOYEE_DATA).document(id);
+
+                                                        ob.set(modified_emp);
+                                                        holder.pending_tag.setVisibility(View.INVISIBLE);
+                                                        Toast.makeText(context, "Updated!!", Toast.LENGTH_LONG).show();
+                                                        // Refreshing the Screen to reflect the changes
+                                                        Intent in = new Intent(context, DueDatesActivity.class);
+                                                        context.startActivity(in);
+
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(context, "Cannot update data now, try later...", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                     }
                                 });
 

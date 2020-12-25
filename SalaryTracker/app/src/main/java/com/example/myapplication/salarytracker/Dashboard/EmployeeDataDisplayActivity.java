@@ -49,10 +49,13 @@ public class EmployeeDataDisplayActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> {
-            Intent in = new Intent(EmployeeDataDisplayActivity.this, AddEmployee.class);
-            startActivity(in);
-            finish();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(EmployeeDataDisplayActivity.this, AddEmployee.class);
+                startActivity(in);
+                finish();
+            }
         });
 
         // Now we have to fetch all the data from employee
@@ -103,23 +106,11 @@ public class EmployeeDataDisplayActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Have to add CreateOptionsMenu to toggle between screens
-     */
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_emp_data_display, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        switch(menuItem.getItemId()) {
-
-            case R.id.to_home:
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(menuItem);
+    public void onBackPressed() {
+        Intent in = new Intent(this, HomeActivity.class);
+        startActivity(in);
+        finish();
+        super.onBackPressed();
     }
 }
