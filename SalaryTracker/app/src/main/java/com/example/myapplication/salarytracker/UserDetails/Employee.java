@@ -7,14 +7,11 @@ public class Employee implements Parcelable {
 
     private String name, emailid, phoneno, post, edu_qual;
     private String base_salary, num_leaves;
-    private int due_date;
-    private int due_month;
-    private int due_year;
+    private int due_date, due_month, due_year;
 
     public Employee() {}
 
-    public Employee(String name, String emailid, String phoneno, String post, String edu_qual, String base_salary, String leaves,
-                    int due_date, int due_month, int due_year) {
+    public Employee(String name, String emailid, String phoneno, String post, String edu_qual, String base_salary, String leaves, int due_date, int due_month, int due_year) {
         this.name = name;
         this.emailid = emailid;
         this.phoneno = phoneno;
@@ -35,6 +32,9 @@ public class Employee implements Parcelable {
         edu_qual = in.readString();
         base_salary = in.readString();
         num_leaves = in.readString();
+        due_date = in.readInt();
+        due_month = in.readInt();
+        due_year = in.readInt();
     }
 
     public static final Creator<Employee> CREATOR = new Creator<Employee>() {
@@ -76,6 +76,7 @@ public class Employee implements Parcelable {
     public String getNum_leaves() {
         return num_leaves;
     }
+
     public int getDue_date() {
         return due_date;
     }
@@ -88,6 +89,13 @@ public class Employee implements Parcelable {
         return due_year;
     }
 
+    public void setDue_date(int date) { this.due_date = date; }
+
+    public void setDue_month(int month) { this.due_month = month; }
+
+    public void setDue_year(int year) { this.due_year = year; }
+
+    public void setNum_leaves(String leaves) { this.num_leaves = leaves; }
 
     @Override
     public int describeContents() {
@@ -103,5 +111,8 @@ public class Employee implements Parcelable {
         dest.writeString(edu_qual);
         dest.writeString(base_salary);
         dest.writeString(num_leaves);
+        dest.writeInt(due_date);
+        dest.writeInt(due_month);
+        dest.writeInt(due_year);
     }
 }

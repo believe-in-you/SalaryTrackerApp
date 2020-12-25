@@ -65,9 +65,11 @@ public class AddEmployee extends AppCompatActivity {
          */
         Calendar calendar = Calendar.getInstance();
         int curr_date = calendar.get(Calendar.DAY_OF_MONTH);
+        int max_date = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int curr_month = calendar.get(Calendar.MONTH);
         int curr_year = calendar.get(Calendar.YEAR);
-        final Employee employee = new Employee(name, emailid, phoneno, post, edu_qual, base_salary, "0", curr_date, curr_month, curr_year);
+        final Employee employee = new Employee(name, emailid, phoneno, post, edu_qual, base_salary, "0", max_date, curr_month, curr_year);
+        Log.e("VALUES DATES INSERT: ", max_date + " " + curr_month + " " + curr_year);
 
         // Checking if this employee exists in database, checking by email ID
         db.collection(EMPLOYEE_DATA)

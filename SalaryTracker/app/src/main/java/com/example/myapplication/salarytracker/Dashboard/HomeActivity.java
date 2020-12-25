@@ -3,6 +3,7 @@ package com.example.myapplication.salarytracker.Dashboard;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.myapplication.salarytracker.Payment.DueDatesActivity;
 import com.example.myapplication.salarytracker.SharedPreferences.SessionManager;
 import com.example.myapplication.salarytracker.UserDetails.Admin;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -62,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
+        Intent in;
             switch(menuItem.getItemId()) {
                 case R.id.logout:
                     SessionManager mManager = new SessionManager(HomeActivity.this);
@@ -70,7 +72,12 @@ public class HomeActivity extends AppCompatActivity {
                     break;
 
                 case R.id.emp_details:
-                    Intent in = new Intent(this, EmployeeDataDisplayActivity.class);
+                    in = new Intent(this, EmployeeDataDisplayActivity.class);
+                    startActivity(in);
+                    break;
+
+                case R.id.due_details:
+                    in = new Intent(this, DueDatesActivity.class);
                     startActivity(in);
                     break;
             }

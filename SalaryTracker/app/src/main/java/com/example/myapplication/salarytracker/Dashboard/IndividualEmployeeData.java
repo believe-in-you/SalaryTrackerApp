@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import static com.example.myapplication.salarytracker.Dashboard.AddEmployee.EMPLOYEE_DATA;
 
-public class IndividualEmployeeData extends AppCompatActivity {
+public class    IndividualEmployeeData extends AppCompatActivity {
 
     private EditText phoneno, post, leaves, base_salary;
     private TextView name, emailid, edu_qual;
@@ -82,6 +83,10 @@ public class IndividualEmployeeData extends AppCompatActivity {
                 if(new_post.isEmpty()) new_post = old_post;
                 if(new_leaves.isEmpty()) new_leaves = old_leaves;
                 if(new_base_salary.isEmpty()) new_base_salary = old_base_salary;
+                int due_date = emp.getDue_date();
+                int due_month = emp.getDue_month();
+                int due_year = emp.getDue_year();
+                Log.e("VALUES: ", String.valueOf(due_date) + " " + String.valueOf(due_month) +  " " + String.valueOf(due_year));
                 final Employee newEmp = new Employee(name.getText().toString(),
                                                     emailid.getText().toString(),
                                                     new_phoneno,
@@ -89,9 +94,10 @@ public class IndividualEmployeeData extends AppCompatActivity {
                                                     edu_qual.getText().toString(),
                                                     new_base_salary,
                                                     new_leaves,
-                                                    emp.getDue_date(),
-                                                    emp.getDue_month(),
-                                                    emp.getDue_year());
+                                                    due_date,
+                                                    due_month,
+                                                    due_year
+                );
 
                 db.collection(EMPLOYEE_DATA)
                         .whereEqualTo("emailid", emailid.getText().toString())
@@ -112,7 +118,6 @@ public class IndividualEmployeeData extends AppCompatActivity {
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
-
 
                             @Override
                             public void onFailure(@NonNull Exception e) {

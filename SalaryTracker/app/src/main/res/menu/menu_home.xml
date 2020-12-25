@@ -9,4 +9,8 @@
         android:id = "@+id/emp_details"
         android:title = "Employee Data"/>
 
+    <item
+        android:id="@+id/due_details"
+        android:title="Due Dates"/>
+
 </menu>

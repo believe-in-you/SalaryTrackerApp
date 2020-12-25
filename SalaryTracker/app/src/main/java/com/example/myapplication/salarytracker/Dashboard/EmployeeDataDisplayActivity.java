@@ -49,13 +49,10 @@ public class EmployeeDataDisplayActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(EmployeeDataDisplayActivity.this, AddEmployee.class);
-                startActivity(in);
-                finish();
-            }
+        fab.setOnClickListener(view -> {
+            Intent in = new Intent(EmployeeDataDisplayActivity.this, AddEmployee.class);
+            startActivity(in);
+            finish();
         });
 
         // Now we have to fetch all the data from employee
@@ -97,7 +94,7 @@ public class EmployeeDataDisplayActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(EmployeeDataDisplayActivity.this, "Error occurred: " + e.getMessage(), Toast.LENGTH_LONG);
+                        Toast.makeText(EmployeeDataDisplayActivity.this, "Error occurred: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         Intent in = new Intent(EmployeeDataDisplayActivity.this, HomeActivity.class);
                         startActivity(in);
                     }
