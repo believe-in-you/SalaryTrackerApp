@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SalaryTracker">
-        <activity android:name=".Dashboard.IndividualEmployeeData"></activity>
+        <activity android:name=".Payment.DueDatesActivity"></activity>
+        <activity android:name=".Dashboard.IndividualEmployeeData" />
         <activity android:name=".Dashboard.AddEmployee" />
         <activity
             android:name=".Dashboard.EmployeeDataDisplayActivity"

@@ -88,7 +88,10 @@ public class IndividualEmployeeData extends AppCompatActivity {
                                                     new_post,
                                                     edu_qual.getText().toString(),
                                                     new_base_salary,
-                                                    new_leaves);
+                                                    new_leaves,
+                                                    emp.getDue_date(),
+                                                    emp.getDue_month(),
+                                                    emp.getDue_year());
 
                 db.collection(EMPLOYEE_DATA)
                         .whereEqualTo("emailid", emailid.getText().toString())

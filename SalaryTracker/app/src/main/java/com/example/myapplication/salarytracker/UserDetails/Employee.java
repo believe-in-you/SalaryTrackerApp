@@ -7,10 +7,14 @@ public class Employee implements Parcelable {
 
     private String name, emailid, phoneno, post, edu_qual;
     private String base_salary, num_leaves;
+    private int due_date;
+    private int due_month;
+    private int due_year;
 
     public Employee() {}
 
-    public Employee(String name, String emailid, String phoneno, String post, String edu_qual, String base_salary, String leaves) {
+    public Employee(String name, String emailid, String phoneno, String post, String edu_qual, String base_salary, String leaves,
+                    int due_date, int due_month, int due_year) {
         this.name = name;
         this.emailid = emailid;
         this.phoneno = phoneno;
@@ -18,6 +22,9 @@ public class Employee implements Parcelable {
         this.edu_qual = edu_qual;
         this.base_salary = base_salary;
         this.num_leaves = leaves;
+        this.due_date = due_date;
+        this.due_month = due_month;
+        this.due_year = due_year;
     }
 
     protected Employee(Parcel in) {
@@ -68,6 +75,17 @@ public class Employee implements Parcelable {
 
     public String getNum_leaves() {
         return num_leaves;
+    }
+    public int getDue_date() {
+        return due_date;
+    }
+
+    public int getDue_month() {
+        return due_month;
+    }
+
+    public int getDue_year() {
+        return due_year;
     }
 
 

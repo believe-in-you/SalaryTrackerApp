@@ -33,7 +33,7 @@ public class SessionManager {
     }
 
     public Admin getSession() {
-        // return roll number of user whose session is saved
+        // return Admin data if any admin is logged in, else returns null
 
         if(sharedPreferences.getString(USERNAME, "NA").compareTo("NA") == 0) return null;
 

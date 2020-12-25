@@ -20,6 +20,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Calendar;
+
 public class AddEmployee extends AppCompatActivity {
 
     private EditText mName, mEmailid, mPhoneno, mPost, mEduQual, mBaseSalary;
@@ -61,8 +63,11 @@ public class AddEmployee extends AppCompatActivity {
         /**
          * INSERT DATA INTO EMPLOYEE COLLECTION NOW
          */
-
-        final Employee employee = new Employee(name, emailid, phoneno, post, edu_qual, base_salary, "0");
+        Calendar calendar = Calendar.getInstance();
+        int curr_date = calendar.get(Calendar.DAY_OF_MONTH);
+        int curr_month = calendar.get(Calendar.MONTH);
+        int curr_year = calendar.get(Calendar.YEAR);
+        final Employee employee = new Employee(name, emailid, phoneno, post, edu_qual, base_salary, "0", curr_date, curr_month, curr_year);
 
         // Checking if this employee exists in database, checking by email ID
         db.collection(EMPLOYEE_DATA)
