@@ -26,7 +26,7 @@ import java.util.Calendar;
 
 public class AddEmployee extends AppCompatActivity {
 
-    private EditText mName, mEmailid, mPhoneno, mPost, mEduQual, mBaseSalary;
+    private EditText mName, mEmailid, mPhoneno, mPost, mEduQual, mBaseSalary, mUnpaidLeavesAmount;
     private FirebaseFirestore db;
     public static final String EMPLOYEE_DATA = "Employee Details";
 
@@ -41,6 +41,7 @@ public class AddEmployee extends AppCompatActivity {
         mPost = findViewById(R.id.emp_post);
         mEduQual = findViewById(R.id.emp_edu_qual);
         mBaseSalary = findViewById(R.id.emp_base_salary);
+        mUnpaidLeavesAmount = findViewById(R.id.emp_unpaid_leaves_amount);
 
         db = FirebaseFirestore.getInstance();
 
@@ -54,9 +55,10 @@ public class AddEmployee extends AppCompatActivity {
         String post = mPost.getText().toString();
         String edu_qual = mEduQual.getText().toString();
         String base_salary = mBaseSalary.getText().toString();
+        String unpaid_leaves_amount = mUnpaidLeavesAmount.getText().toString();
 
         if (name.isEmpty() || emailid.isEmpty() || phoneno.isEmpty() ||
-                post.isEmpty() || edu_qual.isEmpty() || base_salary.isEmpty()) {
+                post.isEmpty() || edu_qual.isEmpty() || base_salary.isEmpty() || unpaid_leaves_amount.isEmpty()) {
 
             // None of positions should be empty...
             Toast.makeText(this, "None of the fields should be left empty", Toast.LENGTH_SHORT).show();
@@ -70,8 +72,9 @@ public class AddEmployee extends AppCompatActivity {
         int max_date = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int curr_month = calendar.get(Calendar.MONTH);
         int curr_year = calendar.get(Calendar.YEAR);
-        final Employee employee = new Employee(name, emailid, phoneno, post, edu_qual, base_salary, "0", max_date, curr_month, curr_year);
-        Log.e("VALUES DATES INSERT: ", max_date + " " + curr_month + " " + curr_year);
+        final Employee employee = new Employee(name, emailid, phoneno, post, edu_qual, base_salary,
+                                        "0", max_date, curr_month, curr_year, unpaid_leaves_amount);
+        Log.e("UNPAID VALUE: ", unpaid_leaves_amount);
 
         // Checking if this employee exists in database, checking by email ID
         db.collection(EMPLOYEE_DATA)

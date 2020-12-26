@@ -28,7 +28,7 @@ import static com.example.myapplication.salarytracker.Dashboard.AddEmployee.EMPL
 
 public class    IndividualEmployeeData extends AppCompatActivity {
 
-    private EditText phoneno, post, leaves, base_salary;
+    private EditText phoneno, post, leaves, base_salary, unpaid_leaves;
     private TextView name, emailid, edu_qual;
     private Button update;
     private FirebaseFirestore db;
@@ -47,6 +47,7 @@ public class    IndividualEmployeeData extends AppCompatActivity {
         edu_qual = findViewById(R.id.ind_edu_qual);
         update = findViewById(R.id.ind_update);
         base_salary = findViewById(R.id.ind_base_salary);
+        unpaid_leaves = findViewById(R.id.ind_unpaid_leaves);
 
         db = FirebaseFirestore.getInstance();
 
@@ -56,18 +57,21 @@ public class    IndividualEmployeeData extends AppCompatActivity {
 
         name.setText(emp.getName());
         emailid.setText(emp.getEmailid());
-        post.setText(emp.getPost());
-        leaves.setText(emp.getNum_leaves());
+        post.setHint(emp.getPost());
+        leaves.setHint(emp.getNum_leaves());
         edu_qual.setText(emp.getEdu_qual());
-        phoneno.setText(emp.getPhoneno());
-        base_salary.setText(emp.getBase_salary());
+        phoneno.setHint(emp.getPhoneno());
+        base_salary.setHint(emp.getBase_salary());
+        unpaid_leaves.setHint(emp.getUnpaid_leaves_amount());
+
 
 
         // Storing the old values, to compare with new ones while updating
-        String old_phoneno = phoneno.getText().toString();
-        String old_post = post.getText().toString();
-        String old_leaves = leaves.getText().toString();
-        String old_base_salary = base_salary.getText().toString();
+        String old_phoneno = emp.getPhoneno();
+        String old_post = emp.getPost();
+        String old_leaves = emp.getNum_leaves();
+        String old_base_salary = emp.getBase_salary();
+        String old_unpaid_leaves_amount = emp.getUnpaid_leaves_amount();
 
 
         update.setOnClickListener(new View.OnClickListener() {
@@ -81,11 +85,15 @@ public class    IndividualEmployeeData extends AppCompatActivity {
                 String new_phoneno = phoneno.getText().toString();
                 String new_post = post.getText().toString();
                 String new_leaves = leaves.getText().toString();
+                String new_unpaid_leaves_amount = unpaid_leaves.getText().toString();
                 String new_base_salary = base_salary.getText().toString();
+
                 if(new_phoneno.isEmpty()) new_phoneno = old_phoneno;
                 if(new_post.isEmpty()) new_post = old_post;
                 if(new_leaves.isEmpty()) new_leaves = old_leaves;
                 if(new_base_salary.isEmpty()) new_base_salary = old_base_salary;
+                if(new_unpaid_leaves_amount.isEmpty()) new_unpaid_leaves_amount = old_unpaid_leaves_amount;
+//                Log.e("Updated unpaid amount", new_unpaid_leaves_amount);
                 int due_date = emp.getDue_date();
                 int due_month = emp.getDue_month();
                 int due_year = emp.getDue_year();
@@ -99,7 +107,8 @@ public class    IndividualEmployeeData extends AppCompatActivity {
                                                     new_leaves,
                                                     due_date,
                                                     due_month,
-                                                    due_year
+                                                    due_year,
+                                                    new_unpaid_leaves_amount
                 );
 
                 db.collection(EMPLOYEE_DATA)
@@ -137,9 +146,9 @@ public class    IndividualEmployeeData extends AppCompatActivity {
 
     public void onPaymentsHistory(View view) {
         Intent in = new Intent(this, PaymentHistoryActivity.class);
-        in.putExtra("emailid", emailid.getText().toString());
-        in.putExtra("name", name.getText().toString());
-        in.putExtra("base_salary", base_salary.getText().toString());
+        in.putExtra("emailid", emp.getEmailid());
+        in.putExtra("name", emp.getName());
+        in.putExtra("base_salary", emp.getBase_salary());
 
         startActivity(in);
 

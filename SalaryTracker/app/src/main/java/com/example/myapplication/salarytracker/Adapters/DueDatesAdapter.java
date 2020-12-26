@@ -1,3 +1,4 @@
+
 package com.example.myapplication.salarytracker.Adapters;
 
 import android.content.Context;
@@ -111,7 +112,10 @@ public class DueDatesAdapter extends RecyclerView.Adapter<DueDatesAdapter.DueDat
             public void onClick(View v) {
                 AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(context);
                 mAlertDialog.setTitle(holder.name.getText().toString());
-                int amnt_to_pay = Integer.parseInt(curr_emp.getBase_salary()) - Integer.parseInt(curr_emp.getNum_leaves()) * 300;
+                Log.e("Base Salary: " , curr_emp.getBase_salary());
+                Log.e("Leaves: " , curr_emp.getNum_leaves());
+                Log.e("Unpaid leaves amnt: " , curr_emp.getUnpaid_leaves_amount());
+                int amnt_to_pay = Integer.parseInt(curr_emp.getBase_salary()) - Integer.parseInt(curr_emp.getNum_leaves()) * Integer.parseInt(curr_emp.getUnpaid_leaves_amount());
                 String amount = String.valueOf(amnt_to_pay);
                 mAlertDialog.setMessage("Amount to be paid is Rs " + amount);
 
@@ -165,7 +169,6 @@ public class DueDatesAdapter extends RecyclerView.Adapter<DueDatesAdapter.DueDat
                                                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                                         String id = queryDocumentSnapshots.getDocuments().get(0).getId();
                                                         DocumentReference ob = db.collection(EMPLOYEE_DATA).document(id);
-
                                                         ob.set(modified_emp);
                                                         holder.pending_tag.setVisibility(View.INVISIBLE);
                                                         Toast.makeText(context, "Updated!!", Toast.LENGTH_LONG).show();

@@ -33,16 +33,19 @@
                 app:cardCornerRadius="5dp"
                 android:layout_marginVertical="15dp"
                 android:layout_marginHorizontal="7dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25dp"
                         android:textStyle="bold"
-                        android:text="Email ID(Non Editable)"/>
+                        android:text="Email ID(Non Editable)" />
+
                     <TextView
                         android:id="@+id/ind_emailid"
                         android:layout_width="match_parent"
@@ -50,63 +53,7 @@
                         android:text="amanpratap1810@gmail.com"
                         android:textSize="20sp" />
                 </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
-            app:cardCornerRadius="5dp"
-            android:layout_marginHorizontal="7dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:text="Phone Number"/>
-
-                <EditText
-                    android:id="@+id/ind_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
-                    android:text="7721954692"
-                    android:textSize="15sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
-            app:cardCornerRadius="5dp"
-            android:layout_marginHorizontal="7dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:text="Post"/>
-
-            <EditText
-                android:id="@+id/ind_post"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="Management Head"
-                android:textSize="20sp" />
-        </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -114,94 +61,192 @@
                 android:layout_marginVertical="15dp"
                 app:cardCornerRadius="5dp"
                 android:layout_marginHorizontal="7dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="25dp"
                         android:textStyle="bold"
                         android:layout_marginTop="20dp"
-                        android:text="Salary (per month)"/>
-            <EditText
-                android:id="@+id/ind_base_salary"
+                        android:text="Phone Number" />
+
+                    <EditText
+                        android:id="@+id/ind_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:hint="7721954692"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:text="200000"
-                android:textSize="20sp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                android:layout_marginVertical="15dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginHorizontal="7dp">
 
-        <androidx.cardview.widget.CardView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:text="Post" />
+
+                    <EditText
+                        android:id="@+id/ind_post"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:hint="Management Head"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginHorizontal="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:text="Salary (per month)" />
+
+                    <EditText
+                        android:id="@+id/ind_base_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:hint="200000"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginHorizontal="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:text="Educational Qualification" />
+
+                    <TextView
+                        android:id="@+id/ind_edu_qual"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:text="B.Tech from VNIT, Nagpur"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                android:layout_marginHorizontal="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:text="Number Of Leaves taken this month" />
+
+
+                    <EditText
+                        android:id="@+id/ind_leaves"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:hint="2"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
             app:cardCornerRadius="5dp"
             android:layout_marginHorizontal="7dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:text="Educational Qualification"/>
 
-            <TextView
-                android:id="@+id/ind_edu_qual"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="B.Tech from VNIT, Nagpur"
-                android:textSize="20sp" />
-        </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="5dp"
-            android:layout_marginHorizontal="7dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:text="Number Of Leaves taken this month"/>
-
-
-            <EditText
-                android:id="@+id/ind_leaves"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="2"
-                android:textSize="20sp" />
-        </LinearLayout>
-        </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:text="Unpaid leaves amount" />
+
+
+                <EditText
+                    android:id="@+id/ind_unpaid_leaves"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:hint="500"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="7dp"
                 android:weightSum="1">
+
                 <Button
                     android:id="@+id/ind_update"
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="match_parent"
                     android:text="Update" />
 
                 <Button
@@ -209,7 +254,7 @@
                     android:layout_width="0dp"
                     android:onClick="onPaymentsHistory"
                     android:layout_weight="0.5"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Payments History" />
             </LinearLayout>
         </LinearLayout>

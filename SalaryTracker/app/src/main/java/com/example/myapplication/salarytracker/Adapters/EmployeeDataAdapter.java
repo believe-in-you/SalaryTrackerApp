@@ -57,6 +57,7 @@ public class EmployeeDataAdapter extends RecyclerView.Adapter<EmployeeDataAdapte
             public void onClick(View v) {
                 Intent in = new Intent(context, IndividualEmployeeData.class);
                 in.putExtra("Current Employee", emp_data.get(position));
+                Log.e("Updated unpaid amount", emp_data.get(position).getUnpaid_leaves_amount());
                 context.startActivity(in);
             }
         });

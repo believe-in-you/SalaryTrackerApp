@@ -6,12 +6,15 @@ import android.os.Parcelable;
 public class Employee implements Parcelable {
 
     private String name, emailid, phoneno, post, edu_qual;
-    private String base_salary, num_leaves;
+    private String base_salary;
+    private String num_leaves;
+    private String unpaid_leaves_amount;
     private int due_date, due_month, due_year;
 
     public Employee() {}
 
-    public Employee(String name, String emailid, String phoneno, String post, String edu_qual, String base_salary, String leaves, int due_date, int due_month, int due_year) {
+    public Employee(String name, String emailid, String phoneno, String post, String edu_qual, String base_salary,
+                    String leaves, int due_date, int due_month, int due_year, String unpaid_leaves_amount) {
         this.name = name;
         this.emailid = emailid;
         this.phoneno = phoneno;
@@ -22,6 +25,7 @@ public class Employee implements Parcelable {
         this.due_date = due_date;
         this.due_month = due_month;
         this.due_year = due_year;
+        this.unpaid_leaves_amount = unpaid_leaves_amount;
     }
 
     protected Employee(Parcel in) {
@@ -32,6 +36,7 @@ public class Employee implements Parcelable {
         edu_qual = in.readString();
         base_salary = in.readString();
         num_leaves = in.readString();
+        unpaid_leaves_amount = in.readString();
         due_date = in.readInt();
         due_month = in.readInt();
         due_year = in.readInt();
@@ -97,6 +102,14 @@ public class Employee implements Parcelable {
 
     public void setNum_leaves(String leaves) { this.num_leaves = leaves; }
 
+    public String getUnpaid_leaves_amount() {
+        return unpaid_leaves_amount;
+    }
+
+    public void setUnpaid_leaves_amount(String unpaid_leaves_amount) {
+        this.unpaid_leaves_amount = unpaid_leaves_amount;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -111,6 +124,7 @@ public class Employee implements Parcelable {
         dest.writeString(edu_qual);
         dest.writeString(base_salary);
         dest.writeString(num_leaves);
+        dest.writeString(unpaid_leaves_amount);
         dest.writeInt(due_date);
         dest.writeInt(due_month);
         dest.writeInt(due_year);
