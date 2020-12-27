@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single"
+        android:title="Features">
+    <item android:id="@+id/emp_data"
+        android:title="Employee Data"/>
+    <item android:id="@+id/due_dates"
+        android:title="Due Dates"/>
+
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:title="Others">
+        <item android:id="@+id/logout"
+            android:title="Logout"/>
+    </group>
+</menu>
